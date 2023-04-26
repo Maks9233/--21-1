@@ -1,0 +1,28 @@
+def is_prime(num):
+    """
+    Перевіряє, чи є задане число простим числом.
+    """
+    if num < 2:
+        return False
+    for i in range(2, int(num**0.5) + 1):
+        if num % i == 0:
+            return False
+    return True
+
+
+def prime_num_generator():
+    """
+    Функція-генератор, що генерує прості числа.
+    """
+    num = 2  # Початкове значення для генерації простих чисел
+    while True:
+        if is_prime(num):
+            yield num  # Повертаємо просте число
+        num += 1  # Збільшуємо лічильник для наступного числа
+
+
+# Приклад використання функції-генератора
+generator = prime_num_generator()
+print(next(generator))  # Виводимо перше просте число: 2
+print(next(generator))  # Виводимо наступне просте число: 3
+print(next(generator))  # Виводимо наступне просте число: 5
